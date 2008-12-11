@@ -1,0 +1,13 @@
+{
+  "description": "Set of extended CSS properties allowed.",
+
+  "inherits": ["css21-whitelist.json"],
+
+  "allowed": [
+    "border-radius", "filter", "opacity", "text-wrap", "word-wrap", "zoom"
+  ],
+
+  "denied": [
+
+  ]
+}

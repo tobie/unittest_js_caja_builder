@@ -1,0 +1,10 @@
+{
+  "description": [
+      "Extensions of HTML attribute parsing for common browser features."
+      ],
+
+  "types": [
+      { "key": "*:NAME", "description": "other name",
+        "type": "GLOBAL_NAME", "optional": true }
+      ]
+}
