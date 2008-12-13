@@ -32,6 +32,16 @@ module UnittestJS
         copy_caja_plugin_assets
         copy_caja_assets
       end
+      
+      def empty!
+        @options.output_unittest_assets_dir.empty!
+        @options.output_assets_dir.empty!
+      end
+      
+      def refresh
+        empty!
+        copy
+      end
     end
   end
 end
