@@ -3,12 +3,12 @@ module UnittestJS
     class AssetsHandler < UnittestJS::Builder::AssetsHandler
       def copy_cajoled_unittest_assets
         files = Dir[@options.cajoled_unittest_assets_dir.join('*')]
-        FileUtils.cp(files, @options.output_assets_dir)
+        FileUtils.cp(files, @options.output_unittest_assets_dir)
       end
 
       def copy_caja_plugin_assets
         CajaBuilder::CAJA_PLUGIN_FILENAMES.each do |filename|
-          FileUtils.cp(caja_plugin_assets_dir.join("#{filename}.js"), @options.output_assets_dir)
+          FileUtils.cp(caja_plugin_assets_dir.join("#{filename}.js"), @options.output_unittest_assets_dir)
         end
       end
       
@@ -18,7 +18,7 @@ module UnittestJS
       
       def copy_caja_assets
         CajaBuilder::CAJA_FILENAMES.each do |filename|
-          FileUtils.cp(caja_assets_dir.join("#{filename}.js"), @options.output_assets_dir)
+          FileUtils.cp(caja_assets_dir.join("#{filename}.js"), @options.output_unittest_assets_dir)
         end
       end
       

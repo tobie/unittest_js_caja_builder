@@ -47,8 +47,14 @@ module UnittestJS
         to_script_tag(cajoled_filename)
       end
       
+      def cajoled_file_loader
+        loader = "#{@options.output_unittest_assets_dir.name}/test_loader.js"
+        to_script_tag(loader)
+      end
+      
       def lib_files
-        LIB_FILENAMES.map { |filename| to_script_tag("assets/#{filename}") }.join("\n")
+        lib_assets_dir = @options.output_unittest_assets_dir.name
+        LIB_FILENAMES.map { |filename| to_script_tag("#{lib_assets_dir}/#{filename}") }.join("\n")
       end
       
       def transport
