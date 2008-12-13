@@ -14,13 +14,6 @@
 
   <script type="text/javascript" src="assets/test_loader.js"></script>
   <%= cajoled_file %>
-  <iframe id="result_transport" name="result_transport" src="" scrolling="no" frameborder="0" style="border: 0px; width: 0px; height: 0px"></iframe>
-
-  <form action="http://localhost:4711/results" accept-charset="utf-8" method="post" target="result_transport">
-    <input id="tests" name="tests" type="hidden" value="45" />
-    <input id="assertions" name="assertions" type="hidden" value="21" />
-    <input id="failures" name="failures" type="hidden" value="0" />
-    <input id="errors" name="errors" type="hidden" value="0" />
-  </form>
+  <%= transport %>
 </body>
 </html>

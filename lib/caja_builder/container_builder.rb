@@ -19,6 +19,8 @@ module UnittestJS
         'console_importer.js'
       ].freeze
       
+      PREFIX = 'unittest_js_'
+      
       def gadget
         @gadget ||= GadgetBuilder.new(file, @options)
       end
@@ -48,10 +50,35 @@ module UnittestJS
       def lib_files
         LIB_FILENAMES.map { |filename| to_script_tag("assets/#{filename}") }.join("\n")
       end
-
+      
+      def transport
+        content = %w[tests assertions failures errors].map { |id| hidden_input(id) }.join("\n")
+        iframe << form(content)
+      end
+      
       private
         def short_template_name
           template_name == 'caja_container' ? '' : template_name.sub('_container', '')
+        end
+        
+        def hidden_input(id)
+          "<input id=\"#{PREFIX}#{id}\" name=\"#{PREFIX}#{id}\" type=\"hidden\" value=\"0\" />"
+        end
+        
+        def form(content)
+          %[<form id="#{PREFIX}transport_form" action="/results"
+            accept-charset="utf-8" method="post" target="#{PREFIX}transport">
+              #{content}
+            </form>
+          ]
+        end
+        
+        def iframe
+          %[<iframe id="#{PREFIX}transport" name="#{PREFIX}transport"
+              src="" scrolling="no" frameborder="0"
+              style="border: 0px; width: 0px; height: 0px">
+            </iframe>
+            ]
         end
     end
   end
